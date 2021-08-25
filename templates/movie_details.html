@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Movie details</title>
+    </head>
+    <body>
+        <h2>Change:</h2>
+        <form method="Post" action="/movie_library/{{ movie_id }}/">
+            {{ form.hidden_tag() }}
+            <table>
+                    {%for field in form if field.widget.input_type != 'hidden' %}
+                        <tr>
+                            <th>{{ field.label }} {% if field.flags.required %}*{% endif% %}</th>
+                            <td>{{ field }}</td>
+                        </tr>
+                    {% endfor %}
+            </table>
+            <input type="submit" value="Change">
+        </form>
+    </body>
+</html>

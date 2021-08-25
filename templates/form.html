@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Movie library</title>
+        <style>
+            table, th, tr, td {border: 1px solid blue}
+        </style>
+    </head>
+
+    <h2>Library</h2>
+
+    <table>
+        <thead>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Rating</th>
+            <th>Time</th>
+        </thead>
+    {% for movie in movies %}
+        <tr>
+            <td><a href="/movie_library/{{ loop.index }}">{{ movie.title }}</a></td>
+            <td>{{ movie.description }}</td>
+            <td>{{ movie.rating }}</td>
+            <td>{{ movie.time}}</td>
+        </tr>
+    {% endfor %}        
+    </table>
+    <div>
+        <h2>Add new movie</h2>
+        <form method="POST" action="/movie_library/">
+            {{ form.hidden_tag() }}
+            <table>
+                {% for field in form if field.widget.input_type != 'hidden' %}
+                    <tr>
+                        <th>{{ field.label }} {% if field.flags.reqiured %}*{% endif %}</th>
+                        <td>{{ field }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <input type="submit" value="Add">
+        </form>
+    </div>
+</html>
