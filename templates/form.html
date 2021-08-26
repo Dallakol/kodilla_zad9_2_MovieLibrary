@@ -20,9 +20,9 @@
     {% for movie in movies %}
         <tr>
             <td><a href="/movie_library/{{ loop.index }}">{{ movie['Title'] }}</a></td>
-            <td>{{ movie[Description] }}</td>
-            <td>{{ movie[Rating] }}</td>
-            <td>{{ movie[Time]}}</td>
+            <td>{{ movie['Description'] }}</td>
+            <td>{{ movie['Rating'] }}</td>
+            <td>{{ movie['Time']}}</td>
         </tr>
     {% endfor %}        
     </table>
